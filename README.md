@@ -308,9 +308,6 @@ YOLOv8s Training (On ACNE04) dataset --> Processing bounding boxes as binary mas
 - **Confidence = 0.05, Iterations = 3, Kernel Size = (7,7)** ![WhatsApp Image 2025-11-05 at 13 32 02_1b7f7639](https://github.com/user-attachments/assets/75625923-4088-4513-9e01-716c000bcd1e)
 
 ## Example usage of modular code
-# ======================================================
-# 💡 Example Usage
-# ======================================================
   ```python
   # Example: Acne Removal Pipeline
   
