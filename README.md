@@ -306,3 +306,43 @@ YOLOv8s Training (On ACNE04) dataset --> Processing bounding boxes as binary mas
   - **Confidence = 0.3, Iterations = 1, Kernel Size = (3,3)** ![WhatsApp Image 2025-11-05 at 13 28 02_79715e09](https://github.com/user-attachments/assets/9bd581e6-3d05-4839-bc40-652aa6be7940)
 - **Confidence = 0.1, Iterations = 2, Kernel Size = (5,5)** ![WhatsApp Image 2025-11-05 at 13 30 24_e1d89364](https://github.com/user-attachments/assets/8488a69d-fcca-4881-90a2-5fdc8951bb95)
 - **Confidence = 0.05, Iterations = 3, Kernel Size = (7,7)** ![WhatsApp Image 2025-11-05 at 13 32 02_1b7f7639](https://github.com/user-attachments/assets/75625923-4088-4513-9e01-716c000bcd1e)
+
+## Example usage of modular code
+# ======================================================
+# 💡 Example Usage
+# ======================================================
+  ```python
+  # Example: Acne Removal Pipeline
+  
+  from google.colab import files
+  
+  # 1️⃣ Upload a face image
+  uploaded = files.upload()
+  img_path = list(uploaded.keys())[0]
+  img_full_path = f"/content/images/{img_path}"
+  
+  # 2️⃣ Detect acne
+  img, mask, boxes = detect_acne(
+      image_path=img_full_path,
+      model_path="/content/best_final.pt",
+      conf=0.1,        # detection confidence
+      pad=15           # padding around acne boxes
+  )
+  
+  # 3️⃣ Cleanse skin
+  cleaned = cleanse_skin(
+      img=img,
+      mask=mask,
+      kernel_size=7,   # mask dilation kernel size
+      iterations=3     # mask dilation iterations
+  )
+  
+  # 4️⃣ Visualize results
+  img_before = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+  img_after = cv2.cvtColor(cv2.imread(cleaned), cv2.COLOR_BGR2RGB)
+  
+  plt.figure(figsize=(10,5))
+  plt.subplot(1,2,1); plt.imshow(img_before); plt.title("Before"); plt.axis("off")
+  plt.subplot(1,2,2); plt.imshow(img_after);  plt.title("After"); plt.axis("off")
+  plt.show()
+  ```
