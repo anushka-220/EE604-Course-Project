@@ -16,7 +16,7 @@ YOLOv8s Training (On ACNE04) dataset --> Processing bounding boxes as binary mas
 - training YOLOv8s on 1257 training images, for 150 epochs, with the best model achieving a mAP50 of 0.632.
 - using dataset with lesser severe acnes for inference
 - Data.yaml
-  ```json
+  ```python
     # --- Create the data.yaml file ---
 
   class_names = [
