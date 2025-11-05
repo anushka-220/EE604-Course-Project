@@ -4,11 +4,8 @@
 YOLOv8s Training (On ACNE04) dataset --> Processing bounding boxes as binary masks for inpainting --> Using Deepfillv2 for inpainting 
 (--> Using SAM based Techniques for pixel wise segmentation)
 
-## Project Outcomes
-
-
-
-
+## Project Outcome
+<img width="794" height="394" alt="image" src="https://github.com/user-attachments/assets/e7beff3a-acac-44fd-80e6-6001ced7854e" />
 
 ## Training:
 - training YOLOv8s on 1257 training images, for 150 epochs, with the best model achieving a mAP50 of 0.632.
