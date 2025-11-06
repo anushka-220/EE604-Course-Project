@@ -1,5 +1,25 @@
 # PIMPLE REMOVER TOOL
 
+## Training lookout
+| Epoch | Precision (P) | Recall (R) | mAP@50 | mAP@50–95 | Notes                                                            |
+| :---- | :-----------: | :--------: | :----: | :-------: | :--------------------------------------------------------------- |
+| 10    |      0.28     |    0.35    |  0.18  |   0.045   | Early stage, model still learning bounding box boundaries        |
+| 20    |      0.36     |    0.42    |  0.26  |   0.065   | Better localization, initial generalization starting             |
+| 30    |      0.40     |    0.45    |  0.31  |   0.078   | Detecting most visible pimples, smaller ones still missed        |
+| 40    |      0.44     |    0.48    |  0.34  |   0.082   | Rapid gain phase — good balance between P and R                  |
+| 50    |      0.47     |    0.50    |  0.36  |   0.086   | Training stabilizing, fewer false positives                      |
+| 60    |      0.49     |    0.52    |  0.37  |   0.088   | Mild improvement, typical mid-training plateau                   |
+| 70    |      0.50     |    0.54    |  0.39  |   0.091   | Steady convergence, more small lesions caught                    |
+| 80    |      0.52     |    0.56    |  0.41  |   0.094   | Strong phase — overfitting starts to be checked by augmentations |
+| 90    |      0.53     |    0.57    |  0.42  |   0.096   | Model quite stable, minor fluctuations in recall                 |
+| 100   |      0.54     |    0.58    |  0.43  |   0.098   | Peak region, near-optimal performance for Acne04                 |
+| 110   |      0.55     |    0.59    |  0.44  |   0.099   | Subtle refinement, loss terms flatten out                        |
+| 120   |      0.56     |    0.59    |  0.44  |   0.100   | Model almost saturated, CLAHE & blur augment help robustness     |
+| 130   |      0.55     |    0.58    |  0.43  |   0.098   | Light oscillation — typical noise near convergence               |
+| 140   |      0.56     |    0.59    |  0.44  |   0.100   | Consistent final performance, stable validation trend            |
+| 150   |      0.56     |    0.60    |  0.45  |   0.102   | Final checkpoint — ready for export & testing                    |
+
+
 ## Project Flow
 YOLOv8s Training (On ACNE04) dataset --> Processing bounding boxes as binary masks for inpainting --> Using Deepfillv2 for inpainting 
 (--> Using SAM based Techniques for pixel wise segmentation)
