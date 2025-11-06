@@ -124,7 +124,87 @@ The binary masks and corresponding original images are passed through DeepFillv2
   print("\n✅ Training complete!")
   print(f"📁 Results saved at: {results.save_dir}")
   ```
-  
+
+## 🧠 Augmentation Techniques Explained
+
+1️⃣ Rotation (degrees=10.0)
+
+Randomly rotates images by up to ±10°.
+
+Helps the model recognize acne from slightly tilted faces or angled photos.
+
+Avoids overfitting to perfectly upright facial orientations.
+
+2️⃣ Translation (translate=0.1)
+
+Shifts the image horizontally and vertically by up to 10% of its size.
+
+Simulates small camera movements or different face positions.
+
+Increases robustness to facial alignment variations.
+
+3️⃣ Scaling (scale=0.5)
+
+Randomly zooms in or out of the image by up to 50%.
+
+Allows the model to detect acne lesions of varying apparent sizes (close-up vs. distant shots).
+
+Improves scale invariance — crucial for small pimples.
+
+4️⃣ Shear (shear=0.0)
+
+No shear transformation applied here (kept 0.0 because facial geometry shouldn’t be distorted).
+
+5️⃣ Perspective Distortion (perspective=0.0)
+
+Disabled — ensures faces don’t get unnaturally warped.
+
+Acne detection benefits more from realistic augmentations, not extreme viewpoint shifts.
+
+6️⃣ Vertical Flip (flipud=0.0)
+
+Disabled, since flipping faces upside-down is unrealistic for human portraits.
+
+7️⃣ Horizontal Flip (fliplr=0.5)
+
+Each image has a 50% chance of being mirrored horizontally.
+
+Important for balancing left–right facial asymmetry — acne can appear on either side.
+
+8️⃣ Mosaic (mosaic=1.0)
+
+Combines 4 different images into one during training.
+
+Encourages the model to detect multiple acne instances under varied lighting and backgrounds.
+
+Greatly improves generalization and small-object learning.
+
+9️⃣ MixUp (mixup=0.1)
+
+Blends two images and their labels (10% probability).
+
+Regularizes the model and smoothens decision boundaries.
+
+Helps prevent overfitting on limited datasets like Acne04.
+
+🔟 Random Erasing (erasing=0.4)
+
+Randomly erases small rectangular patches within images.
+
+Forces the model to rely on surrounding visual context rather than memorizing specific pixel patterns.
+
+Particularly good for small-spot detection robustness.
+
+11️⃣ Color Augmentation (HSV Adjustments)
+
+hsv_h=0.015 → slight hue changes (simulate tone variation under lighting).
+
+hsv_s=0.7 → wide range of saturation changes (helps under different skin tones).
+
+hsv_v=0.4 → moderate brightness variation (models real-world illumination).
+
+These collectively help the detector stay robust to different lighting, camera quality, and skin shades — a key factor for acne datasets.
+
 ## Inpainting and Inference:
 - Batch Inference:
   ```python
