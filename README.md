@@ -18,13 +18,23 @@
 | 130   |      0.55     |    0.58    |  0.43  |   0.098   | Light oscillation — typical noise near convergence               |
 | 140   |      0.56     |    0.59    |  0.44  |   0.100   | Consistent final performance, stable validation trend            |
 | 150   |      0.56     |    0.60    |  0.45  |   0.102   | Final checkpoint — ready for export & testing                    |
+-----------------------------------------------------------------------------------------------------------------------------
 
 <img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/9c447066-3ab1-46d4-a493-d477135192b5" />
 
 
 ## Project Flow
-YOLOv8s Training (On ACNE04) dataset --> Processing bounding boxes as binary masks for inpainting --> Using Deepfillv2 for inpainting 
-(--> Using SAM based Techniques for pixel wise segmentation)
+
+### YOLOv8–DeepFillv2 Inpainting Framework for Acne Lesion Removal
+
+- Lesion Detection (YOLOv8s):
+A YOLOv8-Small object detection model was trained on the Acne04 dataset to localize acne lesions. The network outputs bounding boxes corresponding to individual pimples with high precision and recall. This stage provides coarse-level localization essential for subsequent pixel-level processing.
+
+- Mask Generation for Inpainting:
+The predicted bounding boxes are converted into binary lesion masks. Each mask represents lesion regions as foreground (value = 1) and the surrounding skin as background (value = 0). These masks serve as structured inputs for the image-inpainting model.
+
+- Image Restoration via DeepFillv2:
+The binary masks and corresponding original images are passed through DeepFillv2, a state-of-the-art generative inpainting model based on gated convolutions. DeepFillv2 reconstructs the masked acne regions with visually coherent skin textures, effectively removing lesions while preserving contextual details.
 
 ## Project Outcome
 <img width="794" height="394" alt="image" src="https://github.com/user-attachments/assets/e7beff3a-acac-44fd-80e6-6001ced7854e" />
