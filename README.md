@@ -19,6 +19,8 @@
 | 140   |      0.56     |    0.59    |  0.44  |   0.100   | Consistent final performance, stable validation trend            |
 | 150   |      0.56     |    0.60    |  0.45  |   0.102   | Final checkpoint — ready for export & testing                    |
 
+<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/9c447066-3ab1-46d4-a493-d477135192b5" />
+
 
 ## Project Flow
 YOLOv8s Training (On ACNE04) dataset --> Processing bounding boxes as binary masks for inpainting --> Using Deepfillv2 for inpainting 
