@@ -1,5 +1,8 @@
 # PIMPLE REMOVER TOOL
 
+## Gradio APP interface
+<img width="1490" height="949" alt="image" src="https://github.com/user-attachments/assets/511fdc05-feb4-4b55-b237-6f8b4ccd69fc" />
+
 ## Training lookout
 | Epoch | Precision (P) | Recall (R) | mAP@50 | mAP@50–95 | Notes                                                            |
 | :---- | :-----------: | :--------: | :----: | :-------: | :--------------------------------------------------------------- |
